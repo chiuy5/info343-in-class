@@ -12,7 +12,7 @@ main {
     height: 100vh;
     align-items: center;
     justify-content: center;
-    perspective: 1000px;
+    perspective: 500px;
 }
 
 .box {
@@ -43,3 +43,88 @@ Box 4: explode (scale up while fading out)
 Box 5: shake (move side-to-side like shaking head no)
 Box 6: 3D flip
 */
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes explode {
+    from {
+        /*transform: scale(1);*/
+        opacity: 1;
+    } 
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes dropOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(50vh);
+    }
+}
+
+@keyframes shake {
+    from, to {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translate(5px);
+    }
+}
+
+@keyframes flip {
+    from {
+        transform: rotate3d(0, 1, 0, 0deg);
+    } 
+    to {
+        transform: rotate3d(1, 0 , 1, 360deg);  
+    }
+}
+
+.box:nth-of-type(1):hover {
+    animation: spin 1s infinite;
+}
+
+.box:nth-of-type(2):hover {
+    animation: fadeOut 1s;
+}
+
+.box:nth-of-type(3):hover {
+    animation: explode 1s;
+}
+
+.box:nth-of-type(4):hover {
+    animation: dropOut 1s;
+}
+
+.box:nth-of-type(5):hover {
+    animation: shake 550ms;
+}
+
+.box:nth-of-type(6):hover {
+    animation: flip 1s infinite;
+}
